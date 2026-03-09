@@ -9,10 +9,15 @@
 <head>
     <meta charset="UTF-8">
     <title>Products</title>
-    <link rel="stylesheet" type="text/css" href="/webjars/bootstrap/5.2.3/css/bootstrap.min.css">
+
 </head>
 <body>
 <div class="p-3" layout:fragment="content1">
+    <div class="p-3"></div>
+
+    <a class="btn btn-primary" th:href="@{/newProduct}">
+        New Product
+    </a>
     <table class="table">
         <thead>
         <th>ID</th> <th>Name</th> <th>Price</th> <th>Quantity</th>
