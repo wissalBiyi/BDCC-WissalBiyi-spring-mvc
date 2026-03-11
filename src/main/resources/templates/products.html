@@ -15,7 +15,7 @@
 <div class="p-3" layout:fragment="content1">
     <div class="p-3"></div>
 
-    <a class="btn btn-primary" th:href="@{/newProduct}">
+    <a class="btn btn-primary" th:href="@{/admin/newProduct}">
         New Product
     </a>
     <table class="table">
@@ -29,7 +29,7 @@
             <td th:text="${p.price}"></td>
             <td th:text="${p.quantity}"></td>
             <td>
-                <a class="btn btn-danger" onclick="return confirm('Êtes-vous sûr ?')" th:href="@{/delete(id=${p.id})}">Delete</a>
+                <a class="btn btn-danger" onclick="return confirm('Êtes-vous sûr ?')" th:href="@{/admin/delete(id=${p.id})}">Delete</a>
             </td>
 
         </tr>
