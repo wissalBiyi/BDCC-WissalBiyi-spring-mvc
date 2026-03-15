@@ -3,9 +3,13 @@ package net.biyi.bdccwissalbiyispringmvc.sec;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.Customizer;
+import org.springframework.security.config.annotation.method.configuration.EnableGlobalMethodSecurity;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.core.userdetails.User;
+import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.core.userdetails.UserDetailsService;
+import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.provisioning.InMemoryUserDetailsManager;
@@ -13,6 +17,7 @@ import org.springframework.security.web.SecurityFilterChain;
 
 @Configuration
 @EnableWebSecurity
+@EnableGlobalMethodSecurity(prePostEnabled=true)
 
 public class SecurityConfig {
     @Bean
@@ -33,16 +38,19 @@ public class SecurityConfig {
         );
     }
 
+
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         return http
-                .formLogin(Customizer.withDefaults())
                 .authorizeHttpRequests(ar -> ar
-                        .requestMatchers("/user/**").hasRole("USER")
-                        .requestMatchers("/admin/**", "/delete/**").hasRole("ADMIN")
-                        .requestMatchers("/public/**").permitAll() // Parenthèse fermée ici
+                        .requestMatchers("/public/**" , "/webjers/**").permitAll()
+                       // .requestMatchers("/user/**").hasRole("USER")
+                      //  .requestMatchers("/admin/**", "/delete/**").hasRole("ADMIN")
                         .anyRequest().authenticated()
-                ) // Fin du bloc authorizeHttpRequests
+                )
+                .formLogin(fl -> fl.loginPage("/login").permitAll())
+                .csrf(Customizer.withDefaults())
+                .exceptionHandling(eh -> eh.accessDeniedPage("/notAuthorized"))
                 .build();
     }
 }
