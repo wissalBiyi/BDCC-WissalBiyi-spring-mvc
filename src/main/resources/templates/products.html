@@ -19,6 +19,10 @@
         New Product
     </a>
     </div>
+    <form method="get" th:action="@{/user/index}">
+        <input type="text" name="keyword" th:value="${keyword}">
+        <button class="btn btn-primary">Search</button>
+    </form>
 
 
     <table class="table">
@@ -37,11 +41,25 @@
                 </form>
 
             </td>
+            <td sec:authorize="hasRole('ADMIN')">
+                <a class="btn btn-warning"
+                   th:href="@{/admin/editProduct(id=${p.id})}">
+                    Edit
+                </a>
+            </td>
 
         </tr>
 
         </tbody>
     </table>
+    <ul class="nav nav-pills">
+        <li th:each="page,status:${pages}">
+            <a th:class="${status.index==currentPage?'btn btn-info ms-1':'btn btn-outline-info ms-1'}"
+               th:href="@{/user/index(page=${status.index},keyword=${keyword})}"
+               th:text="${status.index}">
+            </a>
+        </li>
+    </ul>
 </div>
 
 </body>

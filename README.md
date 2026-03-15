@@ -66,11 +66,11 @@ Création du contrôleur Spring MVC pour gérer les actions suivantes :
 - Afficher la liste des produits
 ![img_4.png](img_4.png)
 - Supprimer un produit
-- ![img_6.png](img_6.png)
-- ![img_5.png](img_5.png)
+![img_6.png](img_6.png)
+![img_5.png](img_5.png)
 - Ajouter un produit
-- ![img_8.png](img_8.png)
-- ![img_9.png](img_9.png)
+![img_8.png](img_8.png)
+![img_9.png](img_9.png)
 ## 7. Sécurisation de l'application
 
 L'application est sécurisée avec Spring Security.  
@@ -99,3 +99,26 @@ Deux rôles sont définis :
 
 Lorsqu'un utilisateur ayant le rôle USER tente d'accéder à une page réservée à l'administrateur (par exemple : ajouter un produit), l'application affiche une page "Not Authorized".
 ![img_15.png](img_15.png)
+
+## 8. Fonctionnalités supplémentaires
+
+Afin d'améliorer l'application, plusieurs fonctionnalités supplémentaires ont été ajoutées.
+
+![img_20.png](img_20.png)
+### 1. Recherche des produits
+
+Une barre de recherche a été ajoutée permettant de filtrer les produits par nom.
+
+![img_17.png](img_17.png)
+
+### 2. Edition et mise à jour d'un produit
+
+L'administrateur peut modifier les informations d'un produit existant.
+
+![img_18.png](img_18.png)
+
+
+## Conclusion
+
+Ce projet nous a permis de comprendre le fonctionnement du framework Spring Boot et de ses composants principaux comme Spring MVC, Spring Data JPA et Spring Security pour développer une application web sécurisée.
+
